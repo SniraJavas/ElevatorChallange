@@ -58,6 +58,7 @@ namespace ElevatorChallange.Services
                     if (request > elevator.CurrentFloor)
                         prioritizedQueue.Add(request);
                 }
+                prioritizedQueue.Sort();
             }
             else if (elevator.Direction == Direction.Down)
             {
@@ -66,8 +67,9 @@ namespace ElevatorChallange.Services
                     if (request < elevator.CurrentFloor)
                         prioritizedQueue.Add(request);
                 }
+                prioritizedQueue.Sort((a, b) => b.CompareTo(a));
             }
-
+          
             return prioritizedQueue;
         }
 
