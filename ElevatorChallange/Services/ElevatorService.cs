@@ -1,4 +1,5 @@
-﻿using ElevatorChallange.Models;
+﻿using ElevatorChallange.Interfaces;
+using ElevatorChallange.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElevatorChallange.Services
 {
-    public class ElevatorService 
+    public class ElevatorService : IElevator
     {
 
         /// <summary>
