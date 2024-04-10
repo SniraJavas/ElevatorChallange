@@ -1,11 +1,18 @@
 # Visual Studio Code / Visual Studio
-.vs/
+ElevatorChallangeApp/ElevatorChallenge/.vs/
 *.sln.cache
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
+#Visual Studio Code / Visual Studio Test
+TestElevatorChallange/ElevatorChallenge/.vs/
+*.sln.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 # Compiled output
 bin/
 obj/
@@ -48,5 +55,7 @@ UnityGenerated/
 .idea/
 
 # ElevatorChallenge specific
-ElevatorChallenge/bin/
-ElevatorChallenge/obj/
+ElevatorChallangeApp/ElevatorChallenge/bin/
+ElevatorChallangeApp/ElevatorChallenge/obj/
+ElevatorChallangeApp/TestElevatorChallange/bin/
+ElevatorChallangeApp/TestElevatorChallange/obj/
