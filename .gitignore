@@ -1,0 +1,52 @@
+# Visual Studio Code / Visual Studio
+.vscode/
+*.sln.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Compiled output
+bin/
+obj/
+
+# Local NuGet packages
+*.nuget.cache
+*.dll
+*.exe
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# OS-specific files
+Thumbs.db
+.DS_Store
+
+# Resharper
+_ReSharper*/
+
+# Windows image file caches
+ehthumbs.db
+
+# macOS folder attributes
+.DS_Store
+
+# Mono-specific files
+mono_crash.*
+
+# User-specific files
+*.userprefs
+
+# Unity3D generated files
+Library/
+Temp/
+UnityGenerated/
+
+# Rider generated files
+.idea/
+
+# ElevatorChallenge specific
+ElevatorChallenge/bin/
+ElevatorChallenge/obj/
