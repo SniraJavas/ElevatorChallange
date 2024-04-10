@@ -1,5 +1,5 @@
 # Visual Studio Code / Visual Studio
-ElevatorChallangeApp/ElevatorChallenge/.vs/
+ElevatorChallangeApp/ElevatorChallange/.vs/
 *.sln.cache
 *.suo
 *.user
@@ -55,7 +55,9 @@ UnityGenerated/
 .idea/
 
 # ElevatorChallenge specific
+ElevatorChallangeApp/ElevatorChallange/.vs/
 ElevatorChallangeApp/ElevatorChallenge/bin/
 ElevatorChallangeApp/ElevatorChallenge/obj/
+ElevatorChallangeApp/TestElevatorChallange/.vs/
 ElevatorChallangeApp/TestElevatorChallange/bin/
 ElevatorChallangeApp/TestElevatorChallange/obj/
