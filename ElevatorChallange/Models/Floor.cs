@@ -8,5 +8,14 @@ namespace ElevatorChallange.Models
 {
     public class Floor
     {
+        public int Id { get; set; }
+        public int FloorNumber { get; set; }
+        public bool HasPeopleWaiting { get; set; } 
+
+        public Floor(int floorNumber)
+        {
+            FloorNumber = floorNumber;
+            HasPeopleWaiting = false;
+        }
     }
 }

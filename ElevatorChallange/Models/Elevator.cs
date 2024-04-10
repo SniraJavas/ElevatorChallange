@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace ElevatorChallange.Models
 {
-    public enum Direction
-    {
-        Up,
-        Down
-    }
-
     public class Elevator
     { 
+        public int Id { get; set; }
         public int CurrentFloor { get; set; } // Where the lift is currently at
         public Direction Direction { get; set; } // Indicate whether it is going up or down
         public List<int> Queue { get; set; } // floor requests
