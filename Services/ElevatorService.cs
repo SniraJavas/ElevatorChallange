@@ -43,7 +43,33 @@ namespace ElevatorChallange.Services
             elevator.Direction = direction;
         }
 
-        
+        /// <summary>
+        /// Prioritizing floor requests based on elevator's direction
+        /// </summary>
+        /// <param name="elevator"></param>
+        /// <returns></returns>
+        public List<int> CheckFloorRequests(Elevator elevator)
+        {
+            var prioritizedQueue = new List<int>();
+            if (elevator.Direction == Direction.Up)
+            {
+                foreach (var request in elevator.Queue)
+                {
+                    if (request > elevator.CurrentFloor)
+                        prioritizedQueue.Add(request);
+                }
+            }
+            else if (elevator.Direction == Direction.Down)
+            {
+                foreach (var request in elevator.Queue)
+                {
+                    if (request < elevator.CurrentFloor)
+                        prioritizedQueue.Add(request);
+                }
+            }
+
+            return prioritizedQueue;
+        }
 
         /// <summary>
         /// Handling emergency situations
