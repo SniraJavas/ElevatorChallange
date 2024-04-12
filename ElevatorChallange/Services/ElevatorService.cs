@@ -50,9 +50,10 @@ namespace ElevatorChallange.Services
             }
             Console.WriteLine("Elevator {0} is moving  {1}", elevator.Id, elevator.Direction);
             elevator.CurrentFloor = target;
-            Console.WriteLine("Elevator {0} have arrived at floor {1} to deliver ", elevator.Id, elevator.CurrentFloor);
-            elevator.Queue.Remove(elevator.CurrentFloor);
             elevator.AreDoorsOpen = false;
+            Console.WriteLine("Elevator {0} have arrived at floor {1} to deliver ", elevator.Id, elevator.CurrentFloor);
+            elevator.Queue.Remove(original);
+            
         }
 
         /// <summary>
@@ -137,13 +138,14 @@ namespace ElevatorChallange.Services
                         for (int i = 0; i < requests.Count; i++)
                         {
                             MoveElevator(elevator, requests[i],targetFloor.FloorNumber);
+                            _floorService.UpdateFloorDisplay(targetFloor, building.Elevators);
                         }
                     }
                     
                 }
 
                 // Update floor display
-                _floorService.UpdateFloorDisplay(targetFloor, building.Elevators);
+                
             }
         }
 

@@ -39,12 +39,14 @@ namespace ElevatorChallange.Helpers
 
             // Add request to building's queue
 
-            if (currentFloor > destinationFloor)
+            if (building.Elevators[0].CurrentFloor > currentFloor)
             {
                 building.Queue.Add(((int Floor, Models.Direction Direction))(1, Direction.Down));
+                building.Elevators[0].Direction = Models.Direction.Down;
             }
             else {
                 building.Queue.Add(((int Floor, Models.Direction Direction))(1, Direction.Up));
+                building.Elevators[0].Direction = Models.Direction.Up;
             }
 
             Floor requestFloor = new Floor(currentFloor);
@@ -52,6 +54,7 @@ namespace ElevatorChallange.Helpers
             requestFloor.HasPeopleWaiting = true;
 
             Floor finalFloor = new Floor(destinationFloor);
+
            
             elevatorService.SimulateElevatorOperation(building, requestFloor, finalFloor);
         }
