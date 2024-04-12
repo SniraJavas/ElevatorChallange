@@ -1,3 +1,4 @@
+using ElevatorChallange.Interfaces;
 using ElevatorChallange.Models;
 using ElevatorChallange.Services;
 
@@ -5,11 +6,18 @@ namespace TestElevator
 {
     public class ElevatorServiceTests
     {
+            private readonly IFloor _floorService;
+
+            public ElevatorServiceTests(IFloor floorService)
+            {
+                _floorService = floorService;
+            }
+            
             [Fact]
             public void MoveElevator_Should_Move_To_Target_Floor()
             {
                 // Arrange
-                var elevatorService = new ElevatorService();
+                var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
                 elevator.CurrentFloor = 2; // Assume elevator is currently at floor 2
                 int targetFloor = 5;
@@ -26,7 +34,7 @@ namespace TestElevator
             public void AddRequest_Should_Add_Request_To_Elevator_Queue()
             {
                 // Arrange
-                var elevatorService = new ElevatorService();
+                var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
                 int requestedFloor = 3;
 
@@ -42,7 +50,7 @@ namespace TestElevator
             public void UpdateElevatorState_Should_Update_Elevator_State()
             {
                 // Arrange
-                var elevatorService = new ElevatorService();
+                var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
                 int currentFloor = 3;
                 Direction direction = Direction.Up;
@@ -60,7 +68,7 @@ namespace TestElevator
             public void CheckFloorRequests_Should_Prioritize_Requests_Based_On_Direction()
             {
                 // Arrange
-                var elevatorService = new ElevatorService();
+                var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
                 elevator.CurrentFloor = 3; // Assume elevator is currently at floor 3
                 elevator.Queue = new List<int> { 1, 5, 2, 4 }; // Queue with requests
@@ -78,7 +86,7 @@ namespace TestElevator
             public void HandleEmergency_Should_Stop_Elevator_And_Open_Doors()
             {
                 // Arrange
-                var elevatorService = new ElevatorService();
+                var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
                 elevator.IsEmergency = true;
 

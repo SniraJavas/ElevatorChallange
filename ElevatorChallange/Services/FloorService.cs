@@ -37,17 +37,17 @@ namespace ElevatorChallange.Services
         /// </summary>
         /// <param name="elevators"></param>
         /// <returns></returns>
-        public bool CheckElevatorAvailability(List<Elevator> elevators)
+        public Elevator? CheckElevatorAvailability(List<Elevator> elevators)
         {
             // Check if any elevator is not currently in use (e.g., not moving and doors are closed)
             foreach (var elevator in elevators)
             {
                 if (elevator.IsStopped && !elevator.AreDoorsOpen)
                 {
-                    return true;
+                    return elevator;
                 }
             }
-            return false;
+            return null;
         }
 
         /// <summary>
@@ -72,6 +72,7 @@ namespace ElevatorChallange.Services
         /// <param name="elevators"></param>
         public void UpdateFloorDisplay(Floor floor, List<Elevator> elevators)
         {
+            bool sameFloor = false;
             // Update display based on elevator positions or statuses
             foreach (var elevator in elevators)
             {

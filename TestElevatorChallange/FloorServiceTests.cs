@@ -49,7 +49,7 @@ namespace TestElevator
             };
 
             // Act
-            var isAvailable = floorService.CheckElevatorAvailability(elevators);
+            var isAvailable = floorService.CheckElevatorAvailability(elevators) != null;
 
             // Assert
             Assert.True(isAvailable);

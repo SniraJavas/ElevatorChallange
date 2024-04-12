@@ -11,7 +11,7 @@ namespace ElevatorChallange.Interfaces
     {
         public void AddRequest(Building building, int requestedFloor, Direction direction);
         public void UpdateFloorStatus(Floor floor, bool hasPeopleWaiting);
-        public bool CheckElevatorAvailability(List<Elevator> elevators);
+        public Elevator CheckElevatorAvailability(List<Elevator> elevators);
         public void HandleFloorEvents(Floor floor, bool peopleEntered, bool peopleExited);
         public void UpdateFloorDisplay(Floor floor, List<Elevator> elevators);
 

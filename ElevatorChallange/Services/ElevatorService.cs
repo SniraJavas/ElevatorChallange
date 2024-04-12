@@ -10,7 +10,12 @@ namespace ElevatorChallange.Services
 {
     public class ElevatorService : IElevator
     {
+        private readonly IFloor _floorService;
 
+        public ElevatorService(IFloor floorService)
+        {
+            _floorService = floorService;
+        }
         /// <summary>
         /// Moving the elevator to the target floor
         /// </summary>
@@ -72,6 +77,39 @@ namespace ElevatorChallange.Services
             }
           
             return prioritizedQueue;
+        }
+
+        public void SimulateElevatorOperation(Building building, Floor requestFloor, Floor targetFloor)
+        {
+            // Simulate elevator operation
+            foreach (var floor in building.Floors)
+            {
+                if (floor.HasPeopleWaiting)
+                {
+                    // If people are waiting on the floor, add their requests to the building's queue
+                    foreach (var request in building.Queue)
+                    {
+                        _floorService.AddRequest(building, request.Item1, request.Item2);
+                    }
+                }
+                Elevator elevator = _floorService.CheckElevatorAvailability(building.Elevators);
+                // Check if elevator is available
+                if (elevator != null)
+                {
+                    // If elevator is available, handle the floor events
+                    _floorService.HandleFloorEvents(floor, peopleEntered: true, peopleExited: false);
+
+                    // Update elevator state and move elevator
+                    var requests = CheckFloorRequests(elevator);
+                    if (requests.Count > 0)
+                    {
+                        MoveElevator(elevator, targetFloor.FloorNumber);
+                    }
+                }
+
+                // Update floor display
+                _floorService.UpdateFloorDisplay(targetFloor, building.Elevators);
+            }
         }
 
         /// <summary>
