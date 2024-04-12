@@ -93,7 +93,7 @@ namespace ElevatorChallange.Services
             {
                 foreach (var request in elevator.Queue)
                 {
-                    if (request > elevator.CurrentFloor)
+                    if (request > elevator.CurrentFloor || request == elevator.CurrentFloor)
                         prioritizedQueue.Add(request);
                 }
                 prioritizedQueue.Sort();
@@ -102,7 +102,7 @@ namespace ElevatorChallange.Services
             {
                 foreach (var request in elevator.Queue)
                 {
-                    if (request < elevator.CurrentFloor)
+                    if (request < elevator.CurrentFloor || request == elevator.CurrentFloor)
                         prioritizedQueue.Add(request);
                 }
                 prioritizedQueue.Sort((a, b) => b.CompareTo(a));
@@ -133,7 +133,7 @@ namespace ElevatorChallange.Services
 
                     // Update elevator state and move elevator
                     var requests = CheckFloorRequests(elevator);
-                    if (requests.Count > 0)
+                    if (requests.Count > 0 || building.Elevators[0].Queue.Count > 0)
                     {
                         for (int i = 0; i < requests.Count; i++)
                         {
