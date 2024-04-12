@@ -23,17 +23,30 @@ namespace ElevatorChallange.Services
         /// <param name="targetFloor"></param>
         public void MoveElevator(Elevator elevator,int target ,int original)
         {
-            if ((elevator.CurrentFloor == original && original > target) || elevator.CurrentFloor > original)
+            if ((elevator.CurrentFloor == elevator.CurrentFloor && original > target) || elevator.CurrentFloor > original)
             {
                 elevator.Direction = Direction.Down;
             }
             else {
                 elevator.Direction = Direction.Up;
             }
-            Console.WriteLine("Elevator {0} is moving {1}", elevator.Id, elevator.Direction);
-            elevator.CurrentFloor = target;
-            elevator.CurrentFloor = target;
 
+            Console.WriteLine("Elevator {0} is moving  {1} ", elevator.Id, elevator.Direction);
+            elevator.CurrentFloor = original;
+            elevator.AreDoorsOpen = true;
+            Console.WriteLine("Elevator {0} have arrived at floor {1} to fetch people ", elevator.Id, elevator.CurrentFloor);
+
+            if (elevator.CurrentFloor > target)
+            {
+                elevator.Direction = Direction.Down;
+            }
+            else {
+                elevator.Direction = Direction.Up;
+            }
+            Console.WriteLine("Elevator {0} is moving  {1}", elevator.Id, elevator.Direction);
+            elevator.CurrentFloor = target;
+            Console.WriteLine("Elevator {0} have arrived at floor {1} to deliver ", elevator.Id, elevator.CurrentFloor);
+            elevator.Queue.Remove(elevator.CurrentFloor);
         }
 
         /// <summary>
@@ -43,8 +56,10 @@ namespace ElevatorChallange.Services
         /// <param name="requestedFloor"></param>
         public void AddRequest(Elevator elevator, int requestedFloor)
         {
-            elevator.Queue.Add(requestedFloor);
-            
+            if (!elevator.Queue.Contains(requestedFloor)) 
+            {
+                elevator.Queue.Add(requestedFloor);
+            }  
         }
 
         /// <summary>

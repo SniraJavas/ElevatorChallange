@@ -23,7 +23,7 @@ namespace TestElevator
                 int targetFloor = 5;
 
                 // Act
-                elevatorService.MoveElevator(elevator, targetFloor);
+                elevatorService.MoveElevator(elevator, targetFloor, elevator.CurrentFloor);
 
                 // Assert
                 Assert.Equal(targetFloor, elevator.CurrentFloor);
