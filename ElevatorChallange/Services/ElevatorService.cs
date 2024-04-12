@@ -34,7 +34,14 @@ namespace ElevatorChallange.Services
                     elevator.Direction = Direction.Up;
                 }
 
-                Console.WriteLine("Elevator {0} is moving  {1} ", elevator.Id, elevator.Direction);
+                if (elevator.CurrentFloor != original)
+                {
+                    Console.WriteLine("Elevator {0} is moving  {1} ", elevator.Id, elevator.Direction);
+                }
+                else {
+                    Console.WriteLine("Elevator {0} just oppened doors to pick up people", elevator.Id);
+                }
+               
                 elevator.CurrentFloor = original;
                 elevator.AreDoorsOpen = true;
                 Console.WriteLine("Elevator {0} have arrived at floor {1} to fetch people ", elevator.Id, elevator.CurrentFloor);
@@ -143,9 +150,6 @@ namespace ElevatorChallange.Services
                     }
                     
                 }
-
-                // Update floor display
-                
             }
         }
 
