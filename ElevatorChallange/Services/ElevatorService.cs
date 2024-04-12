@@ -21,10 +21,19 @@ namespace ElevatorChallange.Services
         /// </summary>
         /// <param name="elevator"></param>
         /// <param name="targetFloor"></param>
-        public void MoveElevator(Elevator elevator, int targetFloor)
+        public void MoveElevator(Elevator elevator,int target ,int original)
         {
-            elevator.CurrentFloor = targetFloor;
-            // Might have to update direction
+            if ((elevator.CurrentFloor == original && original > target) || elevator.CurrentFloor > original)
+            {
+                elevator.Direction = Direction.Down;
+            }
+            else {
+                elevator.Direction = Direction.Up;
+            }
+            Console.WriteLine("Elevator {0} is moving {1}", elevator.Id, elevator.Direction);
+            elevator.CurrentFloor = target;
+            elevator.CurrentFloor = target;
+
         }
 
         /// <summary>
@@ -35,6 +44,7 @@ namespace ElevatorChallange.Services
         public void AddRequest(Elevator elevator, int requestedFloor)
         {
             elevator.Queue.Add(requestedFloor);
+            
         }
 
         /// <summary>
@@ -103,8 +113,12 @@ namespace ElevatorChallange.Services
                     var requests = CheckFloorRequests(elevator);
                     if (requests.Count > 0)
                     {
-                        MoveElevator(elevator, targetFloor.FloorNumber);
+                        for (int i = 0; i < requests.Count; i++)
+                        {
+                            MoveElevator(elevator, requests[i],targetFloor.FloorNumber);
+                        }
                     }
+                    
                 }
 
                 // Update floor display

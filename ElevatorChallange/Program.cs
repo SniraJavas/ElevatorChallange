@@ -10,7 +10,7 @@ List<Floor> Floors = Enumerable.Range(1, 5) // There will be 5 floors
                        .Select(floorNumber => new Floor(floorNumber))
                        .ToList<Floor>();
 
-List<Elevator> Elevators = Enumerable.Range(1, 2)  // There will be 2 Elevators
+List<Elevator> Elevators = Enumerable.Range(1, 1) 
                           .Select(id => new Elevator
                           {
                               Id = id,

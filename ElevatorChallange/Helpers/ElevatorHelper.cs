@@ -48,8 +48,11 @@ namespace ElevatorChallange.Helpers
             }
 
             Floor requestFloor = new Floor(currentFloor);
-            Floor finalFloor = new Floor(destinationFloor);
+            elevatorService.AddRequest(elevators[0], requestFloor.FloorNumber);
+            requestFloor.HasPeopleWaiting = true;
 
+            Floor finalFloor = new Floor(destinationFloor);
+           
             elevatorService.SimulateElevatorOperation(building, requestFloor, finalFloor);
         }
     }

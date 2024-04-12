@@ -9,7 +9,7 @@ namespace ElevatorChallange.Interfaces
 {
     public interface IElevator
     {
-        public void MoveElevator(Elevator elevator, int targetFloor);
+        public void MoveElevator(Elevator elevator, int target, int original);
         public void AddRequest(Elevator elevator, int requestedFloor);
         public void UpdateElevatorState(Elevator elevator, int currentFloor, Direction direction);
         public List<int> CheckFloorRequests(Elevator elevator);

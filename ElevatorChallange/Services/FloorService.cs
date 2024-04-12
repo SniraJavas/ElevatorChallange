@@ -79,8 +79,10 @@ namespace ElevatorChallange.Services
                 if (elevator.CurrentFloor == floor.FloorNumber)
                 {
                     Console.WriteLine($"Elevator {elevator.Id} is currently at floor {floor.FloorNumber}");
+                    sameFloor = true;
                 }
             }
+
         }
     }
 }
