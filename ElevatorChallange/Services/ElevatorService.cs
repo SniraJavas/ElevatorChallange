@@ -21,20 +21,25 @@ namespace ElevatorChallange.Services
         /// </summary>
         /// <param name="elevator"></param>
         /// <param name="targetFloor"></param>
-        public void MoveElevator(Elevator elevator,int target ,int original)
+        public void MoveElevator(Elevator elevator,int original ,int target)
         {
-            if ((elevator.CurrentFloor == elevator.CurrentFloor && original > target) || elevator.CurrentFloor > original)
+            if (elevator.CurrentFloor != original) 
             {
-                elevator.Direction = Direction.Down;
-            }
-            else {
-                elevator.Direction = Direction.Up;
-            }
+                if (elevator.CurrentFloor > original)
+                {
+                    elevator.Direction = Direction.Down;
+                }
+                else
+                {
+                    elevator.Direction = Direction.Up;
+                }
 
-            Console.WriteLine("Elevator {0} is moving  {1} ", elevator.Id, elevator.Direction);
-            elevator.CurrentFloor = original;
-            elevator.AreDoorsOpen = true;
-            Console.WriteLine("Elevator {0} have arrived at floor {1} to fetch people ", elevator.Id, elevator.CurrentFloor);
+                Console.WriteLine("Elevator {0} is moving  {1} ", elevator.Id, elevator.Direction);
+                elevator.CurrentFloor = original;
+                elevator.AreDoorsOpen = true;
+                Console.WriteLine("Elevator {0} have arrived at floor {1} to fetch people ", elevator.Id, elevator.CurrentFloor);
+            }
+            
 
             if (elevator.CurrentFloor > target)
             {
@@ -47,6 +52,7 @@ namespace ElevatorChallange.Services
             elevator.CurrentFloor = target;
             Console.WriteLine("Elevator {0} have arrived at floor {1} to deliver ", elevator.Id, elevator.CurrentFloor);
             elevator.Queue.Remove(elevator.CurrentFloor);
+            elevator.AreDoorsOpen = false;
         }
 
         /// <summary>
