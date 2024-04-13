@@ -55,9 +55,9 @@ UnityGenerated/
 .idea/
 
 # ElevatorChallenge specific
-ElevatorChallangeApp/ElevatorChallange/.vs/
-ElevatorChallangeApp/ElevatorChallenge/bin/
-ElevatorChallangeApp/ElevatorChallenge/obj/
-ElevatorChallangeApp/TestElevatorChallange/.vs/
-ElevatorChallangeApp/TestElevatorChallange/bin/
-ElevatorChallangeApp/TestElevatorChallange/obj/
+ElevatorChallange/.vs/
+ElevatorChallenge/bin/
+ElevatorChallenge/obj/
+TestElevatorChallange/.vs/
+TestElevatorChallange/bin/
+TestElevatorChallange/obj/
