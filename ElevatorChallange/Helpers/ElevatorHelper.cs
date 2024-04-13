@@ -16,6 +16,12 @@ namespace ElevatorChallange.Helpers
         public ElevatorHelper(IFloor floorService) {
             _floorService = floorService;
         }
+
+        /// <summary>
+        /// Request an elevator to pick and drop people
+        /// </summary>
+        /// <param name="building"></param>
+        /// <param name="elevators"></param>
         public void RequestElevator(Building building, List<Elevator> elevators)
         {
             ElevatorService elevatorService = new ElevatorService(_floorService);
