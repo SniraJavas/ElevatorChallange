@@ -118,6 +118,13 @@ namespace ElevatorChallange.Services
             return prioritizedQueue;
         }
 
+
+        /// <summary>
+        /// Cor-rdonate Elevator and floor actions to operate
+        /// </summary>
+        /// <param name="building"></param>
+        /// <param name="requestFloor"></param>
+        /// <param name="targetFloor"></param>
         public void SimulateElevatorOperation(Building building, Floor requestFloor, Floor targetFloor)
         {
             // Simulate elevator operation
