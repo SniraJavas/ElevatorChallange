@@ -6,16 +6,11 @@ namespace TestElevator
 {
     public class ElevatorServiceTests
     {
-            private readonly IFloor _floorService;
-
-            public ElevatorServiceTests(IFloor floorService)
-            {
-                _floorService = floorService;
-            }
             
             [Fact]
             public void MoveElevator_Should_Move_To_Target_Floor()
             {
+                FloorService _floorService = new FloorService();
                 // Arrange
                 var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
@@ -23,7 +18,7 @@ namespace TestElevator
                 int targetFloor = 5;
 
                 // Act
-                elevatorService.MoveElevator(elevator, targetFloor, elevator.CurrentFloor);
+                elevatorService.MoveElevator(elevator, elevator.CurrentFloor, targetFloor);
 
                 // Assert
                 Assert.Equal(targetFloor, elevator.CurrentFloor);
@@ -33,6 +28,7 @@ namespace TestElevator
             [Fact]
             public void AddRequest_Should_Add_Request_To_Elevator_Queue()
             {
+                FloorService _floorService = new FloorService();
                 // Arrange
                 var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
@@ -49,6 +45,7 @@ namespace TestElevator
             [Fact]
             public void UpdateElevatorState_Should_Update_Elevator_State()
             {
+                FloorService _floorService = new FloorService();
                 // Arrange
                 var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
@@ -67,6 +64,7 @@ namespace TestElevator
             [Fact]
             public void CheckFloorRequests_Should_Prioritize_Requests_Based_On_Direction()
             {
+                FloorService _floorService = new FloorService();
                 // Arrange
                 var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
@@ -85,6 +83,7 @@ namespace TestElevator
             [Fact]
             public void HandleEmergency_Should_Stop_Elevator_And_Open_Doors()
             {
+                 FloorService _floorService = new FloorService();
                 // Arrange
                 var elevatorService = new ElevatorService(_floorService);
                 var elevator = new Elevator();
